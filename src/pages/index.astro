@@ -1,6 +1,10 @@
 ---
+import { Code } from "@lucide/astro";
+
 import ProfileCard from "@components/ProfileCard.astro";
+import SkillCard from "@components/SkillCard.astro";
 import Layout from "@layouts/Layout.astro";
+import { SkillStatus } from "src/types/skill-status";
 ---
 
 <Layout>
@@ -13,8 +17,21 @@ import Layout from "@layouts/Layout.astro";
     <article class="mt-8">
       <h1 id="projects" class="text-2xl font-bold">Projects</h1>
     </article>
-    <article class="mt-8">
+    <article class="mt-8 flex flex-col gap-4">
       <h1 id="skills" class="text-2xl font-bold">Skills</h1>
+
+      <SkillCard
+        title="Languages"
+        skills={[
+          { name: "JavaScript", status: SkillStatus.Proficient },
+          { name: "TypeScript", status: SkillStatus.Proficient },
+          { name: "C#", status: SkillStatus.Proficient },
+          { name: "Rust", status: SkillStatus.Interested },
+          { name: "Test", status: SkillStatus.Learning },
+        ]}
+      >
+        <Code slot="icon" />
+      </SkillCard>
     </article>
   </div>
 </Layout>

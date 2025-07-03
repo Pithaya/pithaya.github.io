@@ -1,0 +1,25 @@
+---
+import type { Skill } from "src/types/skill";
+import { SkillStatus } from "src/types/skill-status";
+
+interface Props {
+  skill: Skill;
+}
+
+const { skill } = Astro.props;
+---
+
+<div
+  class="bg-zinc-100 dark:bg-zinc-700 shadow-sm px-3 py-1 rounded-lg flex items-center gap-2 text-sm"
+  class:list={[
+    {
+      "opacity-40": skill.status === SkillStatus.Interested,
+      "dark:bg-zinc-700 dark:text-zinc-400 border border-dashed border-zinc-500 bg-zinc-100 text-zinc-800":
+        skill.status === SkillStatus.Learning,
+    },
+  ]}
+>
+  {skill.name}
+  {skill.status === SkillStatus.Interested && <span>&#128173;</span>}
+  {skill.status === SkillStatus.Learning && <span>&#9881;&#65039;</span>}
+</div>

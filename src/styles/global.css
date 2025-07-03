@@ -1,6 +1,13 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+@layer base {
+  ::selection {
+    color: var(--color-amber-500);
+    background-color: var(--color-amber-100);
+  }
+}
+
 @layer components {
   .topography-bg {
     position: relative;
@@ -14,7 +21,11 @@
       left: 0;
       right: 0;
       height: 100%;
-      background-image: linear-gradient(to bottom right, orange, purple);
+      background-image: linear-gradient(
+        to bottom right,
+        var(--color-amber-500),
+        var(--color-fuchsia-900)
+      );
       mask-image: url("/topography.svg");
     }
   }
