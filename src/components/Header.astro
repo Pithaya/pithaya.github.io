@@ -1,0 +1,21 @@
+---
+import { IdCard, FolderGit2 } from "@lucide/astro";
+
+import ThemeToggleButton from "@components/ThemeToggleButton.astro";
+---
+
+<header
+  class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800 shadow-lg sticky top-0 z-50 px-20"
+>
+  <div class="flex items-center gap-4">
+    <a href="#about" class="flex items-center gap-2">
+      <IdCard stroke-width="1" class="size-6" />
+      <span>About</span>
+    </a>
+    <a href="#projects" class="flex items-center gap-2">
+      <FolderGit2 stroke-width="1" class="size-6" />
+      <span>Projects</span>
+    </a>
+  </div>
+  <ThemeToggleButton />
+</header>

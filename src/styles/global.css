@@ -1,2 +1,29 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
+
+@layer components {
+  .topography-bg {
+    position: relative;
+    z-index: 0;
+
+    &:before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background-image: linear-gradient(to bottom right, orange, purple);
+      mask-image: url("/topography.svg");
+    }
+  }
+}
+
+@layer utilities {
+  .shadow-lg-above {
+    box-shadow:
+      0 -10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)),
+      0 -4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+  }
+}
