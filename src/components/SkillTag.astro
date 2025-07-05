@@ -10,11 +10,11 @@ const { skill } = Astro.props;
 ---
 
 <div
-  class="bg-zinc-100 dark:bg-zinc-700 shadow-sm px-3 py-1 rounded-lg flex items-center gap-2 text-sm"
+  class="bg-slate-100 dark:bg-slate-700 shadow-sm px-3 py-1 rounded-lg flex items-center gap-2 text-sm"
   class:list={[
     {
       "opacity-40": skill.status === SkillStatus.Interested,
-      "dark:bg-zinc-700 dark:text-zinc-400 border border-dashed border-zinc-500 bg-zinc-100 text-zinc-800":
+      "text-slate-600 dark:text-slate-400 border border-dashed border-slate-500":
         skill.status === SkillStatus.Learning,
     },
   ]}
