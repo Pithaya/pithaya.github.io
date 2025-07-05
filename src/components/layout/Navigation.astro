@@ -1,0 +1,54 @@
+---
+import Divider from "@components/ui/Divider.astro";
+import { IdCard, FolderGit2, Sparkle } from "@lucide/astro";
+---
+
+<nav
+  class="flex flex-col sm:flex-row grow sm:grow-0 items-stretch gap-2 sm:gap-4"
+>
+  <a
+    id="about-link"
+    href="#about"
+    class="flex items-center justify-center gap-2 button"
+  >
+    <IdCard stroke-width="1" class="size-6" />
+    <span>About</span>
+  </a>
+  <Divider classes={["sm:hidden"]} />
+  <a href="#skills" class="flex items-center justify-center gap-2 button">
+    <Sparkle stroke-width="1" class="size-6" />
+    <span>Skills</span>
+  </a>
+  <Divider classes={["sm:hidden"]} />
+  <a href="#projects" class="flex items-center justify-center gap-2 button">
+    <FolderGit2 stroke-width="1" class="size-6" />
+    <span>Projects</span>
+  </a>
+</nav>
+
+<script>
+  const configureSmoothScrolling = (nav: HTMLElement) => {
+    for (const anchor of nav.querySelectorAll('a[href^="#"]')) {
+      anchor.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const anchorHref = anchor.getAttribute("href") ?? "";
+        const targetElement = document.querySelector(anchorHref);
+
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: "smooth",
+          });
+
+          history.pushState(null, "", anchorHref);
+        }
+      });
+    }
+  };
+
+  for (const nav of document.querySelectorAll("nav")) {
+    if (nav !== null) {
+      configureSmoothScrolling(nav);
+    }
+  }
+</script>

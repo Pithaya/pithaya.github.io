@@ -1,50 +1,70 @@
 ---
-import { IdCard, FolderGit2, Sparkle } from "@lucide/astro";
+import { Menu, X } from "@lucide/astro";
 
 import ThemeToggleButton from "@components/ThemeToggleButton.astro";
+import Navigation from "./Navigation.astro";
 ---
 
 <header
-  class="h-14 flex items-center justify-center bg-slate-50 dark:bg-slate-800 shadow-lg sticky top-0 z-50"
+  class="py-4 max-h-14 shadow-lg sticky flex flex-col items-center justify-center top-0 z-50 bg-slate-50 dark:bg-slate-800"
 >
   <div class="flex items-center justify-between w-8/12">
-    <div class="flex items-center gap-4">
-      <a id="about-link" href="#about" class="flex items-center gap-2 button">
-        <IdCard stroke-width="1" class="size-6" />
-        <span>About</span>
-      </a>
-      <a href="#skills" class="flex items-center gap-2 button">
-        <Sparkle stroke-width="1" class="size-6" />
-        <span>Skills</span>
-      </a>
-      <a href="#projects" class="flex items-center gap-2 button">
-        <FolderGit2 stroke-width="1" class="size-6" />
-        <span>Projects</span>
-      </a>
+    <!-- Desktop nav -->
+    <div class="hidden sm:block">
+      <Navigation />
     </div>
+
+    <!-- Mobile nav -->
+    <div class="sm:hidden flex flex-col items-center">
+      <button
+        id="menu-toggle-open"
+        class="button"
+        type="button"
+        aria-label="Open menu"
+      >
+        <Menu stroke-width="1" class="size-6" />
+      </button>
+      <button
+        id="menu-toggle-close"
+        class="button hidden"
+        type="button"
+        aria-label="Close menu"
+      >
+        <X stroke-width="1" class="size-6" />
+      </button>
+    </div>
+
     <ThemeToggleButton />
+  </div>
+  <div
+    id="mobile-menu"
+    class="flex self-stretch items-stretch h-0 overflow-hidden transition sm:hidden mx-8"
+  >
+    <Navigation />
   </div>
 </header>
 
 <script>
+  const openMenuButton = document.getElementById("menu-toggle-open");
+  const closeMenuButton = document.getElementById("menu-toggle-close");
+  const mobileMenu = document.getElementById("mobile-menu");
   const header = document.querySelector("header");
 
-  if (header !== null) {
-    for (const anchor of header.querySelectorAll('a[href^="#"]')) {
-      anchor.addEventListener("click", (e) => {
-        e.preventDefault();
+  if (openMenuButton && closeMenuButton && mobileMenu && header) {
+    openMenuButton.addEventListener("click", () => {
+      header.classList.remove("max-h-14");
+      mobileMenu.classList.remove("h-0");
 
-        const anchorHref = anchor.getAttribute("href") ?? "";
-        const targetElement = document.querySelector(anchorHref);
+      openMenuButton.classList.add("hidden");
+      closeMenuButton.classList.remove("hidden");
+    });
 
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: "smooth",
-          });
+    closeMenuButton.addEventListener("click", () => {
+      header.classList.add("max-h-14");
+      mobileMenu.classList.add("h-0");
 
-          history.pushState(null, "", anchorHref);
-        }
-      });
-    }
+      openMenuButton.classList.remove("hidden");
+      closeMenuButton.classList.add("hidden");
+    });
   }
 </script>
