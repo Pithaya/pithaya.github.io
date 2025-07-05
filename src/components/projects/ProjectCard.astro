@@ -1,7 +1,7 @@
 ---
 import type { Project } from "src/types/project";
 import ProjectTag from "./ProjectTag.astro";
-import { SquareArrowOutUpRight } from "@lucide/astro";
+import { Lock, SquareArrowOutUpRight } from "@lucide/astro";
 import Divider from "@components/ui/Divider.astro";
 
 interface Props {
@@ -52,6 +52,14 @@ const { project } = Astro.props;
             <span>Open repository</span>
             <SquareArrowOutUpRight size={10} />
           </a>
+        )
+      }
+      {
+        !project.repo && (
+          <div class="text-xs text-subdued flex items-center gap-1">
+            <span>Private</span>
+            <Lock size={10} />
+          </div>
         )
       }
     </div>
