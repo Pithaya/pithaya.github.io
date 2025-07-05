@@ -1,4 +1,5 @@
 ---
+import { CircleQuestionMark } from "@lucide/astro";
 import type { Skill } from "src/types/skill";
 import { SkillStatus } from "src/types/skill-status";
 
@@ -7,19 +8,37 @@ interface Props {
 }
 
 const { skill } = Astro.props;
+
+let skillToolTip: string | undefined = undefined;
+
+if (skill.status === SkillStatus.Interested) {
+  skillToolTip = "Want to learn";
+} else if (skill.status === SkillStatus.Learning) {
+  skillToolTip = "Currently learning";
+}
 ---
 
 <div
-  class="bg-slate-100 dark:bg-slate-700 shadow-sm px-3 py-1 rounded-lg flex items-center gap-2 text-sm"
+  data-tippy-content={skillToolTip}
+  class="bg-slate-100 dark:bg-slate-700 shadow-sm px-3 py-1 rounded-lg flex items-center justify-center gap-1 text-sm"
   class:list={[
     {
       "opacity-40": skill.status === SkillStatus.Interested,
-      "text-subdued border border-dashed border-slate-500":
-        skill.status === SkillStatus.Learning,
+      "text-subdued": skill.status === SkillStatus.Learning,
     },
   ]}
 >
-  {skill.name}
-  {skill.status === SkillStatus.Interested && <span>&#128173;</span>}
-  {skill.status === SkillStatus.Learning && <span>&#9881;&#65039;</span>}
+  <span>{skill.name}</span>
+  {
+    skill.status !== SkillStatus.Proficient && (
+      <CircleQuestionMark stroke-width={1} size={10} class="hidden sm:block" />
+    )
+  }
 </div>
+
+<script>
+  import tippy from "tippy.js";
+  tippy("[data-tippy-content]", {
+    theme: "default",
+  });
+</script>

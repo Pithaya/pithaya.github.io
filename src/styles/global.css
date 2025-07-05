@@ -1,6 +1,24 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+.dark .tippy-box[data-theme~="default"] {
+  background-color: var(--color-slate-50);
+  color: var(--color-slate-950);
+
+  .tippy-arrow {
+    color: var(--color-slate-50);
+  }
+}
+
+.tippy-box[data-theme~="default"] {
+  background-color: var(--color-slate-950);
+  color: var(--color-slate-50);
+
+  .tippy-arrow {
+    color: var(--color-slate-950);
+  }
+}
+
 @layer base {
   ::selection {
     color: var(--color-amber-500);
