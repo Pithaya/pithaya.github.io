@@ -14,7 +14,7 @@ const { skill } = Astro.props;
   class:list={[
     {
       "opacity-40": skill.status === SkillStatus.Interested,
-      "text-slate-600 dark:text-slate-400 border border-dashed border-slate-500":
+      "text-subdued border border-dashed border-slate-500":
         skill.status === SkillStatus.Learning,
     },
   ]}

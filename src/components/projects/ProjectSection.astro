@@ -1,0 +1,66 @@
+---
+import { SquareArrowOutUpRight } from "@lucide/astro";
+import ProjectCard from "./ProjectCard.astro";
+
+const projects = [
+  {
+    name: "My website",
+    description: "<p>Personal website built with Astro.</p>",
+    tags: ["Astro", "Tailwind CSS", "Lucide", "Typescript"],
+    link: "https://pithaya.github.io",
+    repo: "https://github.com/Pithaya/pithaya.github.io",
+  },
+  {
+    name: "Spicetify apps and extensions",
+    description:
+      '<p>A collection of apps and extensions that can be injected in the Spotify desktop client using <a href="https://github.com/spicetify/spicetify-cli" class="underline link">Spicetify.</a></p>',
+    tags: [
+      "Spicetify",
+      "Typescript",
+      "React",
+      "Tailwind CSS",
+      "React hook form",
+      "Reactflow",
+      "Zod",
+      "i18next",
+      "Luxon",
+      "Zustand",
+    ],
+    repo: "https://github.com/Pithaya/spicetify-apps",
+  },
+  {
+    name: "Detroit Become Human - Text transcription",
+    description:
+      "<p>A transcription of dialogues and other text content from the game Detroit Become Human.</p>",
+    tags: [
+      "Angular",
+      "Font awesome",
+      "Transloco",
+      "Typescript",
+      "RXJS",
+      "GoatCounter",
+      "C#",
+      "Spectre.Console",
+    ],
+    link: "https://detroitbecometext.github.io",
+    repo: "https://github.com/detroitbecometext/detroitbecometext.github.io",
+  },
+];
+---
+
+<section class="mt-8 flex flex-col gap-4">
+  <h1 id="projects" class="text-2xl font-bold">Projects</h1>
+
+  <div class="flex flex-col gap-4">
+    {projects.map((project) => <ProjectCard project={project} />)}
+  </div>
+
+  <a
+    href="https://github.com/Pithaya?tab=repositories"
+    target="_blank"
+    class="text-sm text-subdued flex items-center gap-1 hover:underline hover:text-rose-900 hover:dark:text-rose-400 transition-all duration-200 self-end"
+  >
+    <span>See all repositories</span>
+    <SquareArrowOutUpRight size={10} />
+  </a>
+</section>

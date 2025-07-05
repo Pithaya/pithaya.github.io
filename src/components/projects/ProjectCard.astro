@@ -1,0 +1,68 @@
+---
+import type { Project } from "src/types/project";
+import ProjectTag from "./ProjectTag.astro";
+import { SquareArrowOutUpRight } from "@lucide/astro";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<div class="shadow-md flex flex-row rounded-lg">
+  <div
+    class="bg-linear-to-b from-amber-400 via-rose-500 to-fuchsia-900 w-2 rounded-l-lg opacity-80"
+  >
+  </div>
+
+  <div
+    class="bg-white/30 dark:bg-slate-700/30 grow rounded-r-lg p-4 flex flex-col gap-2"
+  >
+    <div class="flex items-center gap-2 justify-between">
+      <div class="flex items-center gap-2">
+        <h2 class="text-lg font-bold">
+          {project.name}
+        </h2>
+        {
+          project.link && (
+            <a
+              href={project.link}
+              target="_blank"
+              title="Open project"
+              class="text-subdued link"
+            >
+              <SquareArrowOutUpRight size={14} />
+            </a>
+          )
+        }
+      </div>
+
+      {
+        project.repo && (
+          <a
+            href={project.repo}
+            target="_blank"
+            title="Open repository"
+            class="text-xs text-subdued flex items-center gap-1 link"
+          >
+            <span>Open repository</span>
+            <SquareArrowOutUpRight size={10} />
+          </a>
+        )
+      }
+    </div>
+
+    <hr class="border-slate-950/20 dark:border-slate-50/20" />
+    <div set:html={project.description} />
+    <ul class="list-none flex flex-wrap gap-2 mt-4">
+      {
+        project.tags.map((tag) => (
+          <li>
+            <ProjectTag tag={tag} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>

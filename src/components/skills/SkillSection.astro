@@ -1,0 +1,127 @@
+---
+import {
+  Bot,
+  Cloud,
+  Code,
+  Database,
+  FlaskConical,
+  Gamepad2,
+  Palette,
+  Server,
+  Wrench,
+} from "@lucide/astro";
+import SkillCard from "./SkillCard.astro";
+import { SkillStatus } from "src/types/skill-status";
+
+const languageSkills = [
+  { name: "JavaScript", status: SkillStatus.Proficient },
+  { name: "TypeScript", status: SkillStatus.Proficient },
+  { name: "C#", status: SkillStatus.Proficient },
+  { name: "Rust", status: SkillStatus.Interested },
+];
+
+const frontendSkills = [
+  { name: "HTML", status: SkillStatus.Proficient },
+  { name: "CSS", status: SkillStatus.Proficient },
+  { name: "Vue", status: SkillStatus.Proficient },
+  { name: "Angular", status: SkillStatus.Proficient },
+  { name: "React", status: SkillStatus.Proficient },
+  { name: "Tailwind", status: SkillStatus.Proficient },
+  { name: "Storybook", status: SkillStatus.Learning },
+  { name: "Qwik", status: SkillStatus.Learning },
+  { name: "Astro", status: SkillStatus.Learning },
+  { name: "Starlight", status: SkillStatus.Interested },
+  { name: "Vitepress", status: SkillStatus.Interested },
+];
+
+const backendSkills = [
+  { name: ".NET", status: SkillStatus.Proficient },
+  { name: "ASP.NET Core", status: SkillStatus.Proficient },
+  { name: ".NET Aspire", status: SkillStatus.Learning },
+];
+
+const databaseSkills = [
+  { name: "PostgreSQL", status: SkillStatus.Proficient },
+  { name: "MySQL", status: SkillStatus.Proficient },
+  { name: "ArangoDB", status: SkillStatus.Proficient },
+  { name: "Entity Framework Core", status: SkillStatus.Proficient },
+];
+
+const devOpsSkills = [
+  { name: "Docker", status: SkillStatus.Proficient },
+  { name: "Azure", status: SkillStatus.Proficient },
+  { name: "GitLab CI", status: SkillStatus.Proficient },
+  { name: "Azure pipelines", status: SkillStatus.Proficient },
+  { name: "GitHub Actions", status: SkillStatus.Learning },
+  { name: "Terraform", status: SkillStatus.Learning },
+  { name: "Kubernetes", status: SkillStatus.Interested },
+  { name: "GCP", status: SkillStatus.Interested },
+  { name: "AWS", status: SkillStatus.Interested },
+];
+
+const aiSkills = [
+  { name: "Ollama", status: SkillStatus.Learning },
+  { name: ".NET Semantic Kernel", status: SkillStatus.Learning },
+];
+
+const tools = [
+  { name: "Git", status: SkillStatus.Proficient },
+  { name: "Bruno", status: SkillStatus.Proficient },
+];
+
+const testingSkills = [
+  { name: "Playwright", status: SkillStatus.Proficient },
+  { name: "Cypress", status: SkillStatus.Proficient },
+  { name: "Robot Framework", status: SkillStatus.Proficient },
+  { name: "Vitest", status: SkillStatus.Proficient },
+  { name: "Jest", status: SkillStatus.Proficient },
+  { name: "NUnit", status: SkillStatus.Proficient },
+];
+
+const gameSkills = [
+  { name: "Godot", status: SkillStatus.Learning },
+  { name: "Blender", status: SkillStatus.Learning },
+];
+
+const iconSize = 18;
+---
+
+<section class="mt-8 flex flex-col gap-4">
+  <h1 id="skills" class="text-2xl font-bold">Skills</h1>
+
+  <SkillCard title="Languages" skills={languageSkills}>
+    <Code size={iconSize} slot="icon" />
+  </SkillCard>
+
+  <SkillCard title="Frontend skills" skills={frontendSkills}>
+    <Palette size={iconSize} slot="icon" />
+  </SkillCard>
+
+  <SkillCard title="Backend skills" skills={backendSkills}>
+    <Server size={iconSize} slot="icon" />
+  </SkillCard>
+
+  <SkillCard title="Database & ORM" skills={databaseSkills}>
+    <Database size={iconSize} slot="icon" />
+  </SkillCard>
+
+  <SkillCard title="DevOps & Cloud" skills={devOpsSkills}>
+    <Cloud size={iconSize} slot="icon" />
+  </SkillCard>
+
+  <SkillCard title="AI" skills={aiSkills}>
+    <Bot size={iconSize} slot="icon" />
+  </SkillCard>
+
+  <SkillCard title="Tools" skills={tools}>
+    <Wrench size={iconSize} slot="icon" />
+  </SkillCard>
+
+  <SkillCard title="Testing" skills={testingSkills}>
+    <FlaskConical size={iconSize} slot="icon" />
+  </SkillCard>
+
+  <SkillCard title="Game development" skills={gameSkills}>
+    <Gamepad2 size={iconSize} slot="icon" />
+  </SkillCard>
+</section>

@@ -29,6 +29,30 @@
       mask-image: url("/topography.svg");
     }
   }
+
+  .text-base {
+    @apply text-slate-950 dark:text-slate-50;
+  }
+
+  .text-primary {
+    @apply text-rose-900 dark:text-rose-400;
+  }
+
+  .text-secondary {
+    @apply text-amber-600 dark:text-amber-400;
+  }
+
+  .text-subdued {
+    @apply text-slate-600 dark:text-slate-400;
+  }
+
+  .link {
+    @apply hover:underline hover:text-rose-900 hover:dark:text-rose-400 transition duration-200;
+  }
+
+  .button {
+    @apply text-amber-600 dark:text-amber-400 transition duration-200;
+  }
 }
 
 @layer utilities {
