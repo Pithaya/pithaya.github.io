@@ -1,0 +1,64 @@
+---
+import type { Contribution } from "src/types/contribution";
+import { SquareArrowOutUpRight } from "@lucide/astro";
+import Divider from "@components/ui/Divider.astro";
+import Tag from "@components/ui/Tag.astro";
+
+interface Props {
+  contribution: Contribution;
+}
+
+const { contribution } = Astro.props;
+---
+
+<div class="shadow-md flex flex-row rounded-lg">
+  <div
+    class="bg-linear-to-b from-green-400 via-blue-500 to-purple-900 w-2 shrink-0 rounded-l-lg opacity-80"
+  >
+  </div>
+
+  <div
+    class="bg-white/30 dark:bg-slate-700/30 grow rounded-r-lg p-4 flex flex-col gap-2"
+  >
+    <div
+      class="flex flex-col sm:flex-row sm:items-center gap-2 justify-between"
+    >
+      <div class="flex items-center gap-2">
+        {
+          contribution.image && (
+            <img
+              src={contribution.image}
+              alt={`${contribution.name} logo`}
+              class="w-8 h-8 rounded object-contain"
+            />
+          )
+        }
+        <h2 class="text-lg font-bold">
+          {contribution.name}
+        </h2>
+      </div>
+
+      <a
+        href={contribution.repo}
+        target="_blank"
+        title="Open repository"
+        class="text-xs text-subdued flex items-center gap-1 link"
+      >
+        <span>Open repository</span>
+        <SquareArrowOutUpRight size={10} />
+      </a>
+    </div>
+
+    <Divider />
+    <div set:html={contribution.description} />
+    <ul class="list-none flex flex-wrap gap-2 mt-4">
+      {
+        contribution.tags.map((tag) => (
+          <li>
+            <Tag tag={tag} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>

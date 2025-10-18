@@ -1,8 +1,8 @@
 ---
 import type { Project } from "src/types/project";
-import ProjectTag from "./ProjectTag.astro";
 import { Lock, SquareArrowOutUpRight } from "@lucide/astro";
 import Divider from "@components/ui/Divider.astro";
+import Tag from "@components/ui/Tag.astro";
 
 interface Props {
   project: Project;
@@ -70,7 +70,7 @@ const { project } = Astro.props;
       {
         project.tags.map((tag) => (
           <li>
-            <ProjectTag tag={tag} />
+            <Tag tag={tag} />
           </li>
         ))
       }
