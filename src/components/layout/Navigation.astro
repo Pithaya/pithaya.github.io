@@ -1,6 +1,6 @@
 ---
 import Divider from "@components/ui/Divider.astro";
-import { IdCard, FolderGit2, Sparkle } from "@lucide/astro";
+import { IdCard, FolderGit2, Sparkle, FolderCheck } from "@lucide/astro";
 ---
 
 <nav
@@ -23,6 +23,14 @@ import { IdCard, FolderGit2, Sparkle } from "@lucide/astro";
   <a href="#projects" class="flex items-center justify-center gap-2 button">
     <FolderGit2 stroke-width="1" class="size-6" />
     <span>Projects</span>
+  </a>
+  <Divider classes={["sm:hidden"]} />
+  <a
+    href="#contributions"
+    class="flex items-center justify-center gap-2 button"
+  >
+    <FolderCheck stroke-width="1" class="size-6" />
+    <span>Contributions</span>
   </a>
 </nav>
 
